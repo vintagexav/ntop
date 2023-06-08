@@ -16,13 +16,23 @@ npm install -g ntop
 ```
 (or install ntop locally)
 
-3)  Then in <b>terminal 1</b> run:
+3) 
+
+Either run the two processes:
+```bash
+npx ntop inject PROCESS_ID & sleep 9; npx ntop PROCESS_ID 10000
+```
+sleep lets the first process inject `Profiling client` 
+
+Or use 2 terminals:
+
+<b>Terminal 1</b>:
 ```bash
 $ npx ntop inject PROCESS_ID
 ```
 (you can add a -v or -f too. -v is very verbody. -f does not sort by ms)
 
-4)  Then in <b>terminal 2</b> run:
+<b>Terminal 2</b>:
 ```bash
 $ npx ntop PROCESS_ID 10000 // (to run this for 10 seconds)
 ```
