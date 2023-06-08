@@ -4,29 +4,29 @@ Bottom up `$ top` CPU Usage in time per Node Function without touching code
 
 <b>NTOP for `Bottom up` or flame (append `-f`) or verbose (append `-v`) without modification of source code</b>
 
-1) In app you dont need to do anything
-but you need the process id got with console.log(${process.pid}) or with `top`
+<h2>In app you dont need to do anything</h2>
+Get the process id got with console.log(${process.pid}) or with `top`
+
 ```bash
-$ top
-console.log(${process.pid})
+$ top // or `console.log(${process.pid})`
 ```
 
-2) Make sure ntop is globally available
-you can install it with
+<h2>Make sure ntop is available globally or locally</h2>
+
 ```bash
-npm install -g ntop
+$ npm install -g ntop
 ```
-(or install ntop locally)
 
-3) 
+<h2>Run profiler with the two processes</h2>
 
-Either run the two processes:
+<b>To run the two processes in one terminal</b>
+
 ```bash
-npx ntop inject PROCESS_ID & sleep 9; npx ntop PROCESS_ID 10000
+$ npx ntop inject PROCESS_ID & sleep 9; npx ntop PROCESS_ID 10000
 ```
 sleep lets the first process inject `Profiling client` 
 
-Or use 2 terminals:
+<b>To run the two profilers in 2 terminals</b>
 
 <b>Terminal 1</b>:
 ```bash
