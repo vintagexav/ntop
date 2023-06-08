@@ -1,3 +1,53 @@
+<h1>Bottom up `$ top` CPU Usage in time per Node Function without touching code</h1>
+
+<b>NTOP for `Bottom up` or flame (append `-f`) or verbose (append `-v`) without modification of source code</b>
+
+1) In app you dont need to do anything
+but you need the process id got with console.log(${process.pid}) or with `top`
+```bash
+$ top
+console.log(${process.pid})
+```
+
+2) Make sure ntop is globally available
+you can install it with
+```bash
+npm install -g ntop
+```
+(or install ntop locally)
+
+3)  Then in <b>terminal 1</b> run:
+```bash
+$ npx ntop inject PROCESS_ID
+```
+(you can add a -v or -f too. -v is very verbody. -f does not sort by ms)
+
+4)  Then in <b>terminal 2</b> run:
+```bash
+$ npx ntop PROCESS_ID 10000 // (to run this for 10 seconds)
+```
+result appears in first terminal
+
+Result example (without `-f` without `-v`)
+
+```
+Bottom up:
+
+* highCPUFunction  | 1880.248ms | index-ntop.js:17:24
+ - highCPUFunction
+* highCPUFunction2 | 852.149ms | index-ntop.js:25:25
+ - highCPUFunction2
+* (program)        | 4.744ms |
+* highCPUFunction  | 2.547ms | index-ntop.js:17:24
+* parse            | 1.3ms | index.js:105:15
+* pushAsyncContext | 1.233ms | async_hooks:538:25
+* listOnTimeout    | 1.219ms | imers:511:24
+ - emitBeforeScript
+* highCPUFunction2 | 1.103ms | index-ntop.js:25:25
+```
+
+--------
+
 "top" command for Node apps
 
 The idea is to be able to quickly see the heaviest currently running Node functions using a single command in the terminal just like with "top" for regular processes. Another major point is only attaching the inspector for the time of the profiling so the tool can be always available in a production server without causing any overhead.
