@@ -4,8 +4,9 @@ Bottom up `$ top` CPU Usage in time per Node Function without touching code
 
 <b>NTOP for `Bottom up` or flame (append `-f`) or verbose (append `-v`) without modification of source code</b>
 
-<h2>In app you dont need to do anything</h2>
-Get the process id got with console.log(${process.pid}) or with `top`
+In app you dont need to do anything
+
+<h2>Get the process id got with console.log(${process.pid}) or with `top`</h2>
 
 ```bash
 $ top // or `console.log(${process.pid})`
