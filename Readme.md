@@ -20,6 +20,9 @@ $ npm install -g ntop
 
 <h2>Run profiler with the two processes</h2>
 
+- 1 process to inject in currently (untouched) running node application
+- 1 process to fetch and profile the CPU execution time per function, after the runtime injection has been performed with process id
+
 <b>To run the two processes in one terminal</b>
 
 ```bash
